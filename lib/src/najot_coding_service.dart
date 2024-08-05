@@ -7,7 +7,7 @@ class NajotCodingService {
   final PaddedBlockCipher cipher;
 
   NajotCodingService(String keyString)
-      : keyParam = KeyParameter(Uint8List.fromList(utf8.encode(keyString))),
+      : keyParam = KeyParameter(Uint8List.fromList(utf8.encode(keyString.padRight(32, ' ')))),
         cipher = PaddedBlockCipher('AES/CBC/PKCS7') {
     final iv = Uint8List(16); // Initialization vector
     final params = PaddedBlockCipherParameters<CipherParameters, CipherParameters>(
